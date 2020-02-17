@@ -45,7 +45,7 @@ public class AlgorithmAndDatastructure {
 			//moves one step close to middle from right
 			tail--;
 		}
-		return sum;		
+		return sum;
 	}	
 	/**
 	 * Multiplies all elements in the List with all the other elements 
@@ -57,6 +57,8 @@ public class AlgorithmAndDatastructure {
 	public long multiplyAll(List<Integer> numberList) {
 		long sum = 0;
 
+		 //Slow way to solve it
+		/*
 		for(int i = 0; i < numberList.size(); i++){
 			int innerLoopSum = 0;
 
@@ -65,6 +67,29 @@ public class AlgorithmAndDatastructure {
 			}
 			sum += innerLoopSum;
 		}
+
+		 */
+
+		// Faster way to solve it
+		long sumOfAllNumbers = 0;
+		long temp = 0;
+
+		//Calculate total sum of list
+		for(int i = 0;  i < numberList.size(); i++)
+			sumOfAllNumbers += numberList.get(i);
+
+		// Decreases sumOfAllNumbers with numberList(i)
+		// Calculates numberList(i) * sumOfAllNumbers
+		// Saves it to sum
+		for(int i = 0; i < numberList.size(); i++){
+
+			//Continues to next number  if numberList.get(i) is 0, no need to continue
+			if(numberList.get(i) == 0)
+				continue;
+			sumOfAllNumbers -= numberList.get(i);
+			sum += (sumOfAllNumbers * numberList.get(i)) ;
+		}
+
 		return sum;
 	}
 }
