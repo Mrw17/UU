@@ -1,4 +1,5 @@
 package algo.sorting;
+import  java.util.Arrays;
 
 /**
  * Sort an array containing integers in ascending order
@@ -8,7 +9,7 @@ public class JavaAPISort implements Sort {
 
 	@Override
 	public int[] sort(int[] unsorted) {
-		// TODO Implement sort using Java API.
-		return null;
+		Arrays.sort(unsorted);
+		return unsorted;
 	}
 }
