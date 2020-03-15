@@ -124,8 +124,12 @@ public class WeatherDataUI {
     	LocalDate dateFrom = getDateInput();
         System.out.print("End date (will be included)\n");
         LocalDate dateTo = getDateInput();
-                       
-        presentResult(weatherData.missingValues(dateFrom, dateTo)); 
+
+        try {
+            presentResult(weatherData.missingValues(dateFrom, dateTo));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }   
     /**
@@ -138,8 +142,12 @@ public class WeatherDataUI {
     	LocalDate dateFrom = getDateInput();
         System.out.print("End date (will be included)\n");
         LocalDate dateTo = getDateInput();
-                       
-        presentResult(weatherData.approvedValues(dateFrom, dateTo));
+
+        try {
+            presentResult(weatherData.approvedValues(dateFrom, dateTo));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }    
     /**
      * Present search result.
