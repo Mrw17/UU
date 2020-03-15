@@ -111,8 +111,6 @@ public class testWeatherDataHandler {
      */
     @Test
     public void testAverageTempBadDatesFromAfterTo() {
-        String searchedValue1 = "NaN";
-
         try {
             LocalDate dateFrom = LocalDate.parse("2000-01-01", dateFormat);
             LocalDate dateTo = LocalDate.parse("1946-01-01", dateFormat);
@@ -121,7 +119,7 @@ public class testWeatherDataHandler {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Assert.assertTrue(strings.get(0).contains(searchedValue1));
+        Assert.assertEquals(0, strings.size());
     }
 
 
@@ -131,7 +129,7 @@ public class testWeatherDataHandler {
      */
     @Test
     public void testAverageTempBadDatesToOutsideRange() {
-        String searchedValue1 = "NaN";
+        boolean foundException = false;
 
         try {
             LocalDate dateFrom = LocalDate.parse("1900-01-01", dateFormat);
@@ -139,9 +137,9 @@ public class testWeatherDataHandler {
             strings = handler.avarageTemperatures(dateFrom, dateTo);
 
         } catch (Exception e) {
-            e.printStackTrace();
+            foundException = true;
         }
-        Assert.assertTrue(strings.get(0).contains(searchedValue1));
+        Assert.assertTrue(foundException);
     }
 
     /**
@@ -149,7 +147,7 @@ public class testWeatherDataHandler {
      */
     @Test
     public void testAverageTempBadDatesFromOutsideRange() {
-        String searchedValue1 = "NaN";
+        boolean foundException = false;
 
         try {
             LocalDate dateFrom = LocalDate.parse("2000-01-01", dateFormat);
@@ -157,9 +155,9 @@ public class testWeatherDataHandler {
             strings = handler.avarageTemperatures(dateFrom, dateTo);
 
         } catch (Exception e) {
-            e.printStackTrace();
+           foundException = true;
         }
-        Assert.assertTrue(strings.get(0).contains(searchedValue1));
+        Assert.assertTrue(foundException);
     }
 
 
@@ -230,7 +228,6 @@ public class testWeatherDataHandler {
      */
     @Test
     public void testMissingValuesBadDatesFromAfterTo() {
-        String searchedValue1 = "NaN";
         try {
             LocalDate dateFrom = LocalDate.parse("2000-01-01", dateFormat);
             LocalDate dateTo = LocalDate.parse("1946-01-01", dateFormat);
@@ -238,7 +235,7 @@ public class testWeatherDataHandler {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Assert.assertTrue(strings.get(0).contains(searchedValue1));
+        Assert.assertEquals(0, strings.size());
     }
 
     /**
@@ -246,7 +243,7 @@ public class testWeatherDataHandler {
      */
     @Test
     public void testMissingValuesBadDatesToOutsideRange() {
-        String searchedValue1 = "NaN";
+        boolean foundException = false;
 
         try {
             LocalDate dateFrom = LocalDate.parse("1900-01-01", dateFormat);
@@ -254,9 +251,9 @@ public class testWeatherDataHandler {
             strings = handler.missingValues(dateFrom, dateTo);
 
         } catch (Exception e) {
-            e.printStackTrace();
+            foundException = true;
         }
-        Assert.assertTrue(strings.get(0).contains(searchedValue1));
+        Assert.assertTrue(foundException);
     }
 
     /**
@@ -264,7 +261,7 @@ public class testWeatherDataHandler {
      */
     @Test
     public void testMissingValuesBadDatesFromOutsideRange() {
-        String searchedValue1 = "NaN";
+        boolean foundException = false;
 
         try {
             LocalDate dateFrom = LocalDate.parse("2000-01-01", dateFormat);
@@ -272,9 +269,9 @@ public class testWeatherDataHandler {
             strings = handler.missingValues(dateFrom, dateTo);
 
         } catch (Exception e) {
-            e.printStackTrace();
+            foundException = true;
         }
-        Assert.assertTrue(strings.get(0).contains(searchedValue1));
+        Assert.assertTrue(foundException);
     }
 
     //----Test Approved values
@@ -347,15 +344,16 @@ public class testWeatherDataHandler {
      */
     @Test
     public void testApprovedValuesBadDatesToOutsideRange() {
-        String searchedValue1 = "NaN";
+        boolean foundException = false;
         try {
             LocalDate dateFrom = LocalDate.parse("1900-01-01", dateFormat);
             LocalDate dateTo = LocalDate.parse("2000-01-01", dateFormat);
             strings = handler.approvedValues(dateFrom, dateTo);
         } catch (Exception e) {
-            e.printStackTrace();
+            foundException = true;
         }
-        Assert.assertTrue(strings.get(0).contains(searchedValue1));
+
+        Assert.assertTrue(foundException);
     }
 
     /**
@@ -363,15 +361,15 @@ public class testWeatherDataHandler {
      */
     @Test
     public void testApprovedValuesBadDatesFromOutsideRange() {
-        String searchedValue1 = "NaN";
+        boolean foundException = false;
         try {
             LocalDate dateFrom = LocalDate.parse("2000-01-01", dateFormat);
             LocalDate dateTo = LocalDate.parse("2100-01-01", dateFormat);
             strings = handler.approvedValues(dateFrom, dateTo);
 
         } catch (Exception e) {
-            e.printStackTrace();
+            foundException = true;
         }
-        Assert.assertTrue(strings.get(0).contains(searchedValue1));
+        Assert.assertTrue(foundException);
     }
 }
