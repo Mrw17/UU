@@ -27,7 +27,7 @@ public class WeatherDataPoint {
         this.date = date;
         this.time = time;
         this.temp = Double.parseDouble(temp);
-        if(approvedValue.equals("g"))
+        if(approvedValue.equals("G"))
             this.quality = true;
     }
 
