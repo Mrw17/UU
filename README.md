@@ -1,2 +1,2 @@
-# UU
-Courses read at Uppsala Universitet
+# 2IS206
+algoritmer och datastrukturer 
